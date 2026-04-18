@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="任务管理器">
+<meta name="theme-color" content="#0f1117">
+<title>任务管理器</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #232633;
+    --border: #2e3244;
+    --text: #e4e6ef;
+    --text2: #8b8fa7;
+    --primary: #6c5ce7;
+    --primary-light: #a29bfe;
+    --success: #00b894;
+    --warning: #fdcb6e;
+    --danger: #e17055;
+    --info: #74b9ff;
+    --radius: 12px;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { overscroll-behavior: none; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg); color: var(--text);
+    min-height: 100vh; min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .app { max-width: 800px; margin: 0 auto; padding: 16px 16px calc(80px + var(--safe-bottom)); }
+
+  /* 头部 */
+  .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .header h1 {
+    font-size: 22px; font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .header-right { display: flex; gap: 8px; align-items: center; }
+  .icon-btn {
+    width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border);
+    background: var(--surface); color: var(--text2); cursor: pointer;
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+    transition: all .15s;
+  }
+  .icon-btn:active { background: var(--surface2); transform: scale(.92); }
+  .sync-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); margin-right: 6px; display: inline-block; }
+  .sync-dot.offline { background: var(--danger); }
+
+  /* 统计条 */
+  .stats-bar { display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .stats-bar::-webkit-scrollbar { display: none; }
+  .stat-chip { flex-shrink: 0; padding: 8px 14px; border-radius: 10px; background: var(--surface); border: 1px solid var(--border); display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .stat-chip .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .stat-chip .val { font-weight: 700; }
+
+  /* 筛选栏 */
+  .filter-scroll { display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px; }
+  .filter-scroll::-webkit-scrollbar { display: none; }
+  .filter-btn { flex-shrink: 0; padding: 8px 18px; border-radius: 20px; border: 1px solid var(--border); background: var(--surface); color: var(--text2); cursor: pointer; font-size: 13px; font-weight: 500; transition: all .2s; }
+  .filter-btn:active { transform: scale(.95); }
+  .filter-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+  /* 搜索 */
+  .search-bar { position: relative; margin-bottom: 14px; display: none; }
+  .search-bar.show { display: block; }
+  .search-bar input { width: 100%; padding: 11px 16px 11px 40px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); font-size: 16px; outline: none; transition: border .2s; }
+  .search-bar input:focus { border-color: var(--primary); }
+  .search-bar .s-icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--text2); pointer-events: none; }
+  .search-bar .s-clear { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border-radius: 50%; border: none; background: var(--surface2); color: var(--text2); cursor: pointer; font-size: 12px; display: none; align-items: center; justify-content: center; }
+  .search-bar .s-clear.show { display: flex; }
+
+  /* 排序行 */
+  .sort-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .task-count { font-size: 13px; color: var(--text2); }
+  .sort-select { padding: 6px 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text2); font-size: 12px; outline: none; cursor: pointer; }
+  .sort-select option { background: var(--surface2); }
+
+  /* 任务列表 */
+  .task-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .task-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; position: relative; overflow: hidden; transition: transform .1s; -webkit-user-select: none; user-select: none; }
+  .task-card:active { transform: scale(.985); }
+  .task-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+  .task-card[data-status="待办"]::before { background: var(--info); }
+  .task-card[data-status="进行中"]::before { background: var(--warning); }
+  .task-card[data-status="已完成"]::before { background: var(--success); }
+  .task-card[data-status="已搁置"]::before { background: var(--danger); }
+
+  .task-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .task-name { font-size: 16px; font-weight: 600; flex: 1; line-height: 1.4; }
+  .task-name.done { text-decoration: line-through; opacity: .6; }
+  .task-actions { display: flex; gap: 6px; }
+  .act-btn { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface2); color: var(--text2); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 15px; transition: all .1s; }
+  .act-btn:active { transform: scale(.88); }
+
+  .task-desc { color: var(--text2); font-size: 13px; margin: 6px 0 12px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  .task-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .status-tag { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .status-tag[data-s="待办"] { background: rgba(116,185,255,.15); color: var(--info); }
+  .status-tag[data-s="进行中"] { background: rgba(253,203,110,.15); color: var(--warning); }
+  .status-tag[data-s="已完成"] { background: rgba(0,184,148,.15); color: var(--success); }
+  .status-tag[data-s="已搁置"] { background: rgba(225,112,85,.15); color: var(--danger); }
+  .priority-tag { padding: 3px 8px; border-radius: 20px; font-size: 11px; font-weight: 500; }
+  .priority-tag[data-p="高"] { background: rgba(225,112,85,.12); color: var(--danger); }
+  .priority-tag[data-p="中"] { background: rgba(253,203,110,.12); color: var(--warning); }
+  .priority-tag[data-p="低"] { background: rgba(116,185,255,.12); color: var(--info); }
+  .progress-wrap { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 120px; }
+  .progress-bar { flex: 1; height: 5px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 3px; transition: width .4s ease; background: linear-gradient(90deg, var(--primary), var(--primary-light)); }
+  .progress-fill.done { background: linear-gradient(90deg, var(--success), #55efc4); }
+  .progress-text { font-size: 12px; color: var(--text2); min-width: 32px; text-align: right; font-weight: 600; }
+  .task-date { font-size: 11px; color: var(--text2); }
+
+  .quick-progress { display: flex; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+  .qp-btn { flex: 1; padding: 6px 0; border-radius: 6px; border: 1px solid var(--border); background: var(--surface2); color: var(--text2); cursor: pointer; font-size: 12px; text-align: center; transition: all .15s; }
+  .qp-btn:active { transform: scale(.93); }
+  .qp-btn.active-progress { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+  .empty { text-align: center; padding: 48px 20px; color: var(--text2); }
+  .empty svg { width: 56px; height: 56px; margin-bottom: 12px; opacity: .3; }
+  .empty p { font-size: 14px; }
+
+  /* 弹窗 */
+  .modal-mask { position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 100; display: flex; align-items: flex-end; justify-content: center; opacity: 0; visibility: hidden; transition: all .25s; }
+  .modal-mask.show { opacity: 1; visibility: visible; }
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 20px 20px 0 0; width: 100%; max-width: 520px; max-height: 92vh; overflow-y: auto; padding: 24px 20px calc(24px + var(--safe-bottom)); transform: translateY(100%); transition: transform .3s cubic-bezier(.32,.72,0,1); -webkit-overflow-scrolling: touch; }
+  .modal-mask.show .modal { transform: translateY(0); }
+  @media (min-width: 600px) { .modal-mask { align-items: center; } .modal { border-radius: 16px; max-height: 88vh; transform: translateY(20px) scale(.97); } .modal-mask.show .modal { transform: translateY(0) scale(1); } }
+
+  .modal-handle { width: 36px; height: 4px; border-radius: 2px; background: var(--border); margin: 0 auto 18px; }
+  @media (min-width: 600px) { .modal-handle { display: none; } }
+  .modal h2 { font-size: 18px; margin-bottom: 20px; }
+
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 13px; color: var(--text2); margin-bottom: 6px; font-weight: 500; }
+  .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-size: 16px; outline: none; transition: border .2s; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--primary); }
+  .form-group textarea { resize: vertical; min-height: 72px; }
+  .form-group select { cursor: pointer; }
+  .form-group select option { background: var(--surface2); }
+
+  .form-row { display: flex; gap: 12px; }
+  .form-row .form-group { flex: 1; }
+
+  .slider-wrap { display: flex; align-items: center; gap: 12px; }
+  .slider-wrap input[type=range] { flex: 1; -webkit-appearance: none; height: 6px; border-radius: 3px; background: var(--surface2); outline: none; border: none; padding: 0; }
+  .slider-wrap input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--primary); cursor: pointer; border: 3px solid var(--primary-light); }
+  .slider-val { min-width: 44px; text-align: center; font-weight: 700; color: var(--primary-light); font-size: 16px; }
+
+  .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+  .btn-cancel { flex: 1; padding: 14px; border-radius: 12px; border: 1px solid var(--border); background: transparent; color: var(--text2); cursor: pointer; font-size: 15px; font-weight: 500; }
+  .btn-cancel:active { background: var(--surface2); }
+  .btn-save { flex: 2; padding: 14px; border-radius: 12px; border: none; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .btn-save:active { transform: scale(.97); }
+  .btn-danger { flex: 2; padding: 14px; border-radius: 12px; border: none; background: var(--danger); color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; }
+
+  .confirm-text { font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 8px; }
+
+  .fab { position: fixed; bottom: calc(24px + var(--safe-bottom)); right: 20px; width: 56px; height: 56px; border-radius: 16px; border: none; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; font-size: 26px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px rgba(108,92,231,.4); z-index: 50; transition: transform .15s; }
+  .fab:active { transform: scale(.9); }
+  @media (min-width: 600px) { .fab { bottom: 32px; right: 32px; width: 52px; height: 52px; border-radius: 14px; font-size: 24px; } }
+
+  .toast-wrap { position: fixed; top: 16px; left: 16px; right: 16px; z-index: 200; display: flex; flex-direction: column; gap: 8px; align-items: center; pointer-events: none; }
+  .toast { padding: 12px 20px; border-radius: 12px; font-size: 14px; background: var(--surface); border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(0,0,0,.4); pointer-events: auto; animation: toastIn .3s ease; }
+  .toast.success { border-color: var(--success); color: var(--success); }
+  .toast.error { border-color: var(--danger); color: var(--danger); }
+  @keyframes toastIn { from { opacity:0; transform: translateY(-20px); } to { opacity:1; transform: translateY(0); } }
+
+  .loading { text-align: center; padding: 40px; color: var(--text2); font-size: 14px; }
+
+  @media (min-width: 600px) { .app { padding: 24px; } .header h1 { font-size: 26px; } .task-card { padding: 18px; } .task-name { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <h1>📋 任务管理器</h1>
+    <div class="header-right">
+      <span style="font-size:12px;color:var(--text2);display:flex;align-items:center"><span class="sync-dot" id="syncDot"></span><span id="syncText">同步中</span></span>
+      <button class="icon-btn" onclick="toggleSearch()" title="搜索">🔍</button>
+    </div>
+  </div>
+
+  <div class="stats-bar" id="statsBar"></div>
+
+  <div class="search-bar" id="searchBar">
+    <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="search" id="searchInput" placeholder="搜索任务名称或描述..." autocomplete="off">
+    <button class="s-clear" id="searchClear" onclick="clearSearch()">✕</button>
+  </div>
+
+  <div class="filter-scroll" id="filterGroup">
+    <button class="filter-btn active" data-filter="全部">全部</button>
+    <button class="filter-btn" data-filter="待办">🔵 待办</button>
+    <button class="filter-btn" data-filter="进行中">🟡 进行中</button>
+    <button class="filter-btn" data-filter="已完成">🟢 已完成</button>
+    <button class="filter-btn" data-filter="已搁置">🔴 已搁置</button>
+  </div>
+
+  <div class="sort-row">
+    <span class="task-count" id="taskCount"></span>
+    <select class="sort-select" id="sortSelect">
+      <option value="created-desc">最新创建</option>
+      <option value="created-asc">最早创建</option>
+      <option value="progress-desc">进度 高→低</option>
+      <option value="progress-asc">进度 低→高</option>
+      <option value="priority-desc">优先级 高→低</option>
+      <option value="priority-asc">优先级 低→高</option>
+      <option value="deadline-asc">截止日期 近→远</option>
+    </select>
+  </div>
+
+  <div class="task-list" id="taskList"><div class="loading">加载中...</div></div>
+</div>
+
+<button class="fab" onclick="openModal()" aria-label="新建任务">＋</button>
+
+<!-- 新建/编辑弹窗 -->
+<div class="modal-mask" id="taskModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <h2 id="modalTitle">新建任务</h2>
+    <div class="form-group">
+      <label>任务名称 *</label>
+      <input type="text" id="taskName" placeholder="输入任务名称" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label>任务描述</label>
+      <textarea id="taskDesc" placeholder="描述任务的详细内容..."></textarea>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>状态</label>
+        <select id="taskStatus">
+          <option value="待办">待办</option>
+          <option value="进行中">进行中</option>
+          <option value="已完成">已完成</option>
+          <option value="已搁置">已搁置</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>优先级</label>
+        <select id="taskPriority">
+          <option value="中">中</option>
+          <option value="高">高</option>
+          <option value="低">低</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>执行程度</label>
+      <div class="slider-wrap">
+        <input type="range" id="taskProgress" min="0" max="100" value="0" step="5">
+        <span class="slider-val" id="progressVal">0%</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>截止日期</label>
+        <input type="date" id="taskDeadline">
+      </div>
+      <div class="form-group">
+        <label>创建日期</label>
+        <input type="text" id="taskCreated" readonly style="color:var(--text2)">
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">取消</button>
+      <button class="btn-save" onclick="saveTask()">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- 确认删除弹窗 -->
+<div class="modal-mask" id="confirmModal">
+  <div class="modal" style="max-width:400px">
+    <div class="modal-handle"></div>
+    <h2>确认删除</h2>
+    <p class="confirm-text" id="confirmText"></p>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeConfirm()">取消</button>
+      <button class="btn-danger" onclick="confirmDelete()">删除</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+let tasks = [];
+let currentFilter = '全部';
+let editingId = null;
+let deletingId = null;
+let searchVisible = false;
+
+const API = '/api/tasks';
+
+// ===== API 调用 =====
+async function fetchTasks() {
+  try {
+    const res = await fetch(API);
+    tasks = await res.json();
+    setSync(true);
+  } catch(e) {
+    setSync(false);
+    console.error('加载失败', e);
+  }
+  render();
+}
+
+async function apiCreate(data) {
+  const res = await fetch(API, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) });
+  if (!res.ok) throw new Error('创建失败');
+  return await res.json();
+}
+
+async function apiUpdate(id, data) {
+  const res = await fetch(`${API}/${id}`, { method: 'PUT', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) });
+  if (!res.ok) throw new Error('更新失败');
+  return await res.json();
+}
+
+async function apiDelete(id) {
+  const res = await fetch(`${API}/${id}`, { method: 'DELETE' });
+  if (!res.ok) throw new Error('删除失败');
+  return await res.json();
+}
+
+function setSync(ok) {
+  document.getElementById('syncDot').className = 'sync-dot' + (ok ? '' : ' offline');
+  document.getElementById('syncText').textContent = ok ? '已同步' : '离线';
+}
+
+// ===== 渲染 =====
+function render() { renderStats(); renderList(); }
+
+function renderStats() {
+  const total = tasks.length;
+  const todo = tasks.filter(t => t.status === '待办').length;
+  const doing = tasks.filter(t => t.status === '进行中').length;
+  const done = tasks.filter(t => t.status === '已完成').length;
+  const hold = tasks.filter(t => t.status === '已搁置').length;
+  document.getElementById('statsBar').innerHTML = `
+    <div class="stat-chip"><div class="dot" style="background:var(--text2)"></div><span class="val">${total}</span> 全部</div>
+    <div class="stat-chip"><div class="dot" style="background:var(--info)"></div><span class="val">${todo}</span> 待办</div>
+    <div class="stat-chip"><div class="dot" style="background:var(--warning)"></div><span class="val">${doing}</span> 进行中</div>
+    <div class="stat-chip"><div class="dot" style="background:var(--success)"></div><span class="val">${done}</span> 已完成</div>
+    <div class="stat-chip"><div class="dot" style="background:var(--danger)"></div><span class="val">${hold}</span> 搁置</div>
+  `;
+}
+
+function renderList() {
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  const sort = document.getElementById('sortSelect').value;
+
+  let filtered = tasks.filter(t => {
+    if (currentFilter !== '全部' && t.status !== currentFilter) return false;
+    if (search && !t.name.toLowerCase().includes(search) && !(t.desc || '').toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  const po = { '高': 3, '中': 2, '低': 1 };
+  filtered.sort((a, b) => {
+    switch(sort) {
+      case 'created-desc': return (b.created||'').localeCompare(a.created||'');
+      case 'created-asc': return (a.created||'').localeCompare(b.created||'');
+      case 'progress-desc': return b.progress - a.progress;
+      case 'progress-asc': return a.progress - b.progress;
+      case 'priority-desc': return (po[b.priority]||0) - (po[a.priority]||0);
+      case 'priority-asc': return (po[a.priority]||0) - (po[b.priority]||0);
+      case 'deadline-asc': if(!a.deadline) return 1; if(!b.deadline) return -1; return a.deadline.localeCompare(b.deadline);
+      default: return 0;
+    }
+  });
+
+  document.getElementById('taskCount').textContent = `共 ${filtered.length} 项`;
+  const list = document.getElementById('taskList');
+
+  if (filtered.length === 0) {
+    list.innerHTML = `<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12h6M12 9v6"/></svg><p>${search ? '没有找到匹配的任务' : '暂无任务，点击 ＋ 开始创建'}</p></div>`;
+    return;
+  }
+
+  list.innerHTML = filtered.map(t => {
+    const isOverdue = t.deadline && t.status !== '已完成' && new Date(t.deadline) < new Date();
+    const qp = [0,25,50,75,100].map(v => `<button class="qp-btn ${t.progress===v?'active-progress':''}" onclick="quickProgress('${t.id}',${v})">${v}%</button>`).join('');
+    return `
+    <div class="task-card" data-status="${t.status}" onclick="editTask('${t.id}')">
+      <div class="task-top">
+        <div class="task-name ${t.status==='已完成'?'done':''}">${esc(t.name)}</div>
+        <div class="task-actions" onclick="event.stopPropagation()">
+          <button class="act-btn" onclick="editTask('${t.id}')">✎</button>
+          <button class="act-btn del" onclick="askDelete('${t.id}')">✕</button>
+        </div>
+      </div>
+      ${t.desc ? `<div class="task-desc">${esc(t.desc)}</div>` : ''}
+      <div class="task-meta">
+        <span class="status-tag" data-s="${t.status}">${t.status}</span>
+        <span class="priority-tag" data-p="${t.priority}">${t.priority}优先</span>
+        <div class="progress-wrap">
+          <div class="progress-bar"><div class="progress-fill ${t.progress>=100?'done':''}" style="width:${t.progress}%"></div></div>
+          <span class="progress-text">${t.progress}%</span>
+        </div>
+        ${t.deadline ? `<span class="task-date" style="${isOverdue?'color:var(--danger);font-weight:600':''}">${isOverdue?'⚠️':'📅'} ${t.deadline}</span>` : ''}
+      </div>
+      <div class="quick-progress" onclick="event.stopPropagation()">${qp}</div>
+    </div>`;
+  }).join('');
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ===== 快捷进度 =====
+async function quickProgress(id, val) {
+  const t = tasks.find(t => t.id === id);
+  if (!t) return;
+  let status = t.status;
+  if (val >= 100 && status !== '已搁置') status = '已完成';
+  else if (val > 0 && status === '待办') status = '进行中';
+  else if (val === 0) status = '待办';
+  try {
+    await apiUpdate(id, { progress: val, status });
+    t.progress = val; t.status = status;
+    render(); setSync(true);
+    toast('进度已更新', 'success');
+  } catch(e) { toast('更新失败', 'error'); setSync(false); }
+}
+
+// ===== 搜索 =====
+function toggleSearch() {
+  searchVisible = !searchVisible;
+  const bar = document.getElementById('searchBar');
+  bar.classList.toggle('show', searchVisible);
+  if (searchVisible) document.getElementById('searchInput').focus();
+  else { document.getElementById('searchInput').value = ''; renderList(); }
+}
+function clearSearch() { document.getElementById('searchInput').value = ''; document.getElementById('searchClear').classList.remove('show'); renderList(); document.getElementById('searchInput').focus(); }
+document.getElementById('searchInput').addEventListener('input', e => { document.getElementById('searchClear').classList.toggle('show', e.target.value.length > 0); renderList(); });
+
+// ===== 筛选 & 排序 =====
+document.getElementById('filterGroup').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn'); if (!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active'); currentFilter = btn.dataset.filter; renderList();
+});
+document.getElementById('sortSelect').addEventListener('change', renderList);
+
+// ===== 滑块 =====
+document.getElementById('taskProgress').addEventListener('input', e => { document.getElementById('progressVal').textContent = e.target.value + '%'; });
+
+// ===== 弹窗 =====
+function openModal(id) {
+  editingId = id || null;
+  if (id) {
+    const t = tasks.find(t => t.id === id); if (!t) return;
+    document.getElementById('modalTitle').textContent = '编辑任务';
+    document.getElementById('taskName').value = t.name;
+    document.getElementById('taskDesc').value = t.desc || '';
+    document.getElementById('taskStatus').value = t.status;
+    document.getElementById('taskPriority').value = t.priority;
+    document.getElementById('taskProgress').value = t.progress;
+    document.getElementById('progressVal').textContent = t.progress + '%';
+    document.getElementById('taskDeadline').value = t.deadline || '';
+    document.getElementById('taskCreated').value = t.created || '';
+  } else {
+    document.getElementById('modalTitle').textContent = '新建任务';
+    document.getElementById('taskName').value = '';
+    document.getElementById('taskDesc').value = '';
+    document.getElementById('taskStatus').value = '待办';
+    document.getElementById('taskPriority').value = '中';
+    document.getElementById('taskProgress').value = 0;
+    document.getElementById('progressVal').textContent = '0%';
+    document.getElementById('taskDeadline').value = '';
+    document.getElementById('taskCreated').value = new Date().toISOString().slice(0,10);
+  }
+  document.getElementById('taskModal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() { document.getElementById('taskModal').classList.remove('show'); document.body.style.overflow = ''; editingId = null; }
+function editTask(id) { openModal(id); }
+
+async function saveTask() {
+  const name = document.getElementById('taskName').value.trim();
+  if (!name) { toast('请输入任务名称', 'error'); return; }
+
+  const status = document.getElementById('taskStatus').value;
+  let progress = parseInt(document.getElementById('taskProgress').value);
+  let finalStatus = status;
+  if (status === '已完成' && progress < 100) progress = 100;
+  if (progress >= 100 && status !== '已完成' && status !== '已搁置') finalStatus = '已完成';
+
+  const data = {
+    name, desc: document.getElementById('taskDesc').value.trim(),
+    status: finalStatus, priority: document.getElementById('taskPriority').value,
+    progress, deadline: document.getElementById('taskDeadline').value,
+  };
+
+  try {
+    if (editingId) {
+      const updated = await apiUpdate(editingId, data);
+      const idx = tasks.findIndex(t => t.id === editingId);
+      if (idx >= 0) tasks[idx] = updated;
+      toast('任务已更新', 'success');
+    } else {
+      const created = await apiCreate(data);
+      tasks.unshift(created);
+      toast('任务已创建', 'success');
+    }
+    setSync(true);
+    closeModal(); render();
+  } catch(e) { toast('保存失败', 'error'); setSync(false); }
+}
+
+// ===== 删除 =====
+function askDelete(id) {
+  deletingId = id;
+  const t = tasks.find(t => t.id === id);
+  document.getElementById('confirmText').textContent = `确定要删除任务「${t ? t.name : ''}」吗？`;
+  document.getElementById('confirmModal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeConfirm() { document.getElementById('confirmModal').classList.remove('show'); document.body.style.overflow = ''; deletingId = null; }
+
+async function confirmDelete() {
+  if (!deletingId) return;
+  try {
+    await apiDelete(deletingId);
+    tasks = tasks.filter(t => t.id !== deletingId);
+    toast('任务已删除', 'success'); setSync(true);
+  } catch(e) { toast('删除失败', 'error'); setSync(false); }
+  closeConfirm(); render();
+}
+
+// ===== Toast =====
+function toast(msg, type = '') {
+  const el = document.createElement('div'); el.className = 'toast ' + type; el.textContent = msg;
+  document.getElementById('toastWrap').appendChild(el);
+  setTimeout(() => { el.style.opacity = 0; el.style.transition = 'opacity .3s'; setTimeout(() => el.remove(), 300); }, 2400);
+}
+
+// ===== 遮罩关闭 =====
+document.getElementById('taskModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+document.getElementById('confirmModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeConfirm(); });
+
+// ===== 下滑关闭 =====
+let touchStartY = 0;
+document.querySelector('#taskModal .modal').addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+document.querySelector('#taskModal .modal').addEventListener('touchmove', e => { if (e.touches[0].clientY - touchStartY > 80) closeModal(); }, { passive: true });
+
+// ===== 定时同步（每 30 秒拉一次） =====
+setInterval(fetchTasks, 30000);
+
+// ===== 启动 =====
+fetchTasks();
+</script>
+</body>
+</html>
