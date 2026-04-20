@@ -5,3 +5,14 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
     plan: free
+    envVars:
+      - key: GH_BACKUP_REPO
+        sync: false
+      - key: GH_BACKUP_TOKEN
+        sync: false
+      - key: GH_BACKUP_BRANCH
+        value: data-backup
+        sync: false
+      - key: BACKUP_INTERVAL
+        value: "300"
+        sync: false
