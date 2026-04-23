@@ -1,0 +1,36 @@
+{
+  "tasks": [
+    {
+      "id": "69e996cb7ffe3d034107",
+      "name": "持久化测试",
+      "desc": "看看数据会不会丢",
+      "status": "待办",
+      "priority": "中",
+      "progress": 50,
+      "deadline": "",
+      "is_draft": 0,
+      "created": "2026-04-23",
+      "updated": "2026-04-23",
+      "stages": [
+        {
+          "id": "69e996cbd7cecf0",
+          "task_id": "69e996cb7ffe3d034107",
+          "name": "第一步",
+          "completed": true,
+          "sort_order": 0
+        },
+        {
+          "id": "69e996cb849f301",
+          "task_id": "69e996cb7ffe3d034107",
+          "name": "第二步",
+          "completed": false,
+          "sort_order": 1
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "password_hash": "94477a98f2a69f0063d8b78e9e8223e16bb7cfe0d7f396fea7e3d4d348dd0e79",
+    "salt": "e9304ee5c571e8a240b7db00edbbfbe7"
+  }
+}
