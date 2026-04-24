@@ -1,6 +1,19 @@
 {
   "tasks": [
     {
+      "id": "69eb23e71f2472f62689",
+      "name": "采集OT uc服务的",
+      "desc": "",
+      "status": "待办",
+      "priority": "中",
+      "progress": 0,
+      "deadline": "",
+      "is_draft": 1,
+      "created": "2026-04-24",
+      "updated": "2026-04-24",
+      "stages": []
+    },
+    {
       "id": "69eb21325e893bae4410",
       "name": "AI客服自动化管理",
       "desc": "通过本地模型和云端模型部署接入企业微信或者服务号，进行客户日常问答管理",
