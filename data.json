@@ -7,13 +7,13 @@
       "status": "待办",
       "priority": "中",
       "progress": 0,
-      "deadline": "",
-      "is_draft": 1,
+      "deadline": "2026-04-30",
+      "is_draft": 0,
       "created": "2026-04-24",
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb20177c98e20",
+          "id": "69eb201bfcc0220",
           "task_id": "69eb2017dd4ca1a8ef2c",
           "name": "士大夫",
           "completed": false,
