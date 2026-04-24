@@ -1,27 +1,5 @@
 {
-  "tasks": [
-    {
-      "id": "69eb2017dd4ca1a8ef2c",
-      "name": "ds",
-      "desc": "def",
-      "status": "待办",
-      "priority": "中",
-      "progress": 0,
-      "deadline": "2026-04-30",
-      "is_draft": 0,
-      "created": "2026-04-24",
-      "updated": "2026-04-24",
-      "stages": [
-        {
-          "id": "69eb201bfcc0220",
-          "task_id": "69eb2017dd4ca1a8ef2c",
-          "name": "士大夫",
-          "completed": false,
-          "sort_order": 0
-        }
-      ]
-    }
-  ],
+  "tasks": [],
   "auth": {
     "password_hash": "ac7f5bb8753f9fff708ae3b52dd9fe3ec2607c2c5d2c135e0c75f25d55dd643f",
     "salt": "e741a244c5ab6c0acbadae53309cc63f"
