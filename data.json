@@ -13,9 +13,9 @@
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb264763d5e60",
+          "id": "69eb264c97debb0",
           "task_id": "69eb261f58ee35f7de51",
-          "name": "建立",
+          "name": "建立公众号自动化部署",
           "completed": true,
           "sort_order": 0
         }
