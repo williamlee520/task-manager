@@ -7,34 +7,34 @@
       "status": "进行中",
       "priority": "高",
       "progress": 75,
-      "deadline": "",
-      "is_draft": 1,
+      "deadline": "2026-04-30",
+      "is_draft": 0,
       "created": "2026-04-24",
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb21b35e3e040",
+          "id": "69eb21b6fdc7090",
           "task_id": "69eb21325e893bae4410",
           "name": "建立企业微信和服务号",
           "completed": true,
           "sort_order": 0
         },
         {
-          "id": "69eb21b3fb555c1",
+          "id": "69eb21b6cd30721",
           "task_id": "69eb21325e893bae4410",
           "name": "部署本地模型和申请云端模型",
           "completed": true,
           "sort_order": 1
         },
         {
-          "id": "69eb21b3c97e442",
+          "id": "69eb21b61fda322",
           "task_id": "69eb21325e893bae4410",
           "name": "接入之后试运行",
           "completed": true,
           "sort_order": 2
         },
         {
-          "id": "69eb21b31bf4643",
+          "id": "69eb21b6a45b843",
           "task_id": "69eb21325e893bae4410",
           "name": "调教AI客服和优化prompt",
           "completed": false,
