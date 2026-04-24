@@ -13,16 +13,16 @@
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb25c111c8af0",
+          "id": "69eb25c6945d920",
           "task_id": "69eb25306ba9911fc615",
           "name": "复制采集美团酒店的数据档案，尝试同样的方法采集其他平台",
           "completed": true,
           "sort_order": 0
         },
         {
-          "id": "69eb25c15384651",
+          "id": "69eb25c688156f1",
           "task_id": "69eb25306ba9911fc615",
-          "name": "建立价格体系",
+          "name": "建立价格体系活动内容",
           "completed": false,
           "sort_order": 1
         }
