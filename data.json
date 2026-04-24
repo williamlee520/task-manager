@@ -6,18 +6,25 @@
       "desc": "复制美团酒店采集数据的过程，平移到其他平台数据的采集体系，活动归档利润分析",
       "status": "进行中",
       "priority": "高",
-      "progress": 100,
+      "progress": 50,
       "deadline": "",
       "is_draft": 1,
       "created": "2026-04-24",
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb25b7aed5300",
+          "id": "69eb25bc0860850",
           "task_id": "69eb25306ba9911fc615",
           "name": "复制采集美团酒店的数据档案，尝试同样的方法采集其他平台",
           "completed": true,
           "sort_order": 0
+        },
+        {
+          "id": "69eb25bcdd5df31",
+          "task_id": "69eb25306ba9911fc615",
+          "name": "建立价格",
+          "completed": false,
+          "sort_order": 1
         }
       ]
     },
