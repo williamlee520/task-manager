@@ -1,6 +1,19 @@
 {
   "tasks": [
     {
+      "id": "69eb269ecc9450c6f34f",
+      "name": "平台",
+      "desc": "",
+      "status": "待办",
+      "priority": "中",
+      "progress": 0,
+      "deadline": "",
+      "is_draft": 1,
+      "created": "2026-04-24",
+      "updated": "2026-04-24",
+      "stages": []
+    },
+    {
       "id": "69eb261f58ee35f7de51",
       "name": "公众号自动推送管理系统",
       "desc": "AI建立不同的agent来实现公众号自动化运营管理",
