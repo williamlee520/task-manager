@@ -1,6 +1,19 @@
 {
   "tasks": [
     {
+      "id": "69eb2a5cceab23a046d3",
+      "name": "AI平台自动化管理",
+      "desc": "",
+      "status": "待办",
+      "priority": "中",
+      "progress": 0,
+      "deadline": "",
+      "is_draft": 1,
+      "created": "2026-04-24",
+      "updated": "2026-04-24",
+      "stages": []
+    },
+    {
       "id": "69eb269ecc9450c6f34f",
       "name": "通过采集美团酒店的数据经验，复制其他平台",
       "desc": "根据之前采集美团酒店的数据经验，然后采集其他平台的数据",
