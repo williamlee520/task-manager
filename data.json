@@ -13,23 +13,23 @@
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb2670d671b60",
+          "id": "69eb26755130d70",
           "task_id": "69eb261f58ee35f7de51",
           "name": "建立公众号自动化部署的工作流程-初稿",
           "completed": true,
           "sort_order": 0
         },
         {
-          "id": "69eb2670cfeb0d1",
+          "id": "69eb2675de900e1",
           "task_id": "69eb261f58ee35f7de51",
           "name": "测试修改",
           "completed": true,
           "sort_order": 1
         },
         {
-          "id": "69eb26704e1f4e2",
+          "id": "69eb26756332562",
           "task_id": "69eb261f58ee35f7de51",
-          "name": "晚上",
+          "name": "完善可正",
           "completed": false,
           "sort_order": 2
         }
