@@ -13,14 +13,14 @@
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb295596aa680",
+          "id": "69eb295af41fe00",
           "task_id": "69eb269ecc9450c6f34f",
           "name": "AI 采集能够登录的平台",
           "completed": false,
           "sort_order": 0
         },
         {
-          "id": "69eb2955be414d1",
+          "id": "69eb295aef5fbb1",
           "task_id": "69eb269ecc9450c6f34f",
           "name": "不能登录的平台人工采集给 AI",
           "completed": false,
