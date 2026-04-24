@@ -13,16 +13,16 @@
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb24838758b60",
+          "id": "69eb24889d82c00",
           "task_id": "69eb23e71f2472f62689",
           "name": "在WorkBuddy建立任务，采集美团酒店的房价",
           "completed": false,
           "sort_order": 0
         },
         {
-          "id": "69eb24832602951",
+          "id": "69eb24883e61e11",
           "task_id": "69eb23e71f2472f62689",
-          "name": "让body work body采集美团酒店的房源",
+          "name": "让w采集美团酒店的房源",
           "completed": false,
           "sort_order": 1
         }
