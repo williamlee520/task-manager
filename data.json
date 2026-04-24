@@ -7,27 +7,27 @@
       "status": "进行中",
       "priority": "中",
       "progress": 66,
-      "deadline": "",
+      "deadline": "2026-04-30",
       "is_draft": 0,
       "created": "2026-04-24",
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb267d597f800",
+          "id": "69eb26888317ea0",
           "task_id": "69eb261f58ee35f7de51",
           "name": "建立公众号自动化部署的工作流程-初稿",
           "completed": true,
           "sort_order": 0
         },
         {
-          "id": "69eb267dba98261",
+          "id": "69eb2688a3a3271",
           "task_id": "69eb261f58ee35f7de51",
           "name": "测试修改",
           "completed": true,
           "sort_order": 1
         },
         {
-          "id": "69eb267de0811b2",
+          "id": "69eb26887e29cd2",
           "task_id": "69eb261f58ee35f7de51",
           "name": "完善可正常运营",
           "completed": false,
