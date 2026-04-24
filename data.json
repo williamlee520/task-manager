@@ -7,27 +7,27 @@
       "status": "待办",
       "priority": "中",
       "progress": 0,
-      "deadline": "",
-      "is_draft": 1,
+      "deadline": "2026-04-30",
+      "is_draft": 0,
       "created": "2026-04-24",
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb2aca7a525a0",
+          "id": "69eb2acf76e15f0",
           "task_id": "69eb2a5cceab23a046d3",
           "name": "多为表格，建立房态订单等信息",
           "completed": false,
           "sort_order": 0
         },
         {
-          "id": "69eb2aca37daf11",
+          "id": "69eb2acf1d7a021",
           "task_id": "69eb2a5cceab23a046d3",
           "name": "连接 workbuddy之前抓取的所有平台数据，包括订单管理",
           "completed": false,
           "sort_order": 1
         },
         {
-          "id": "69eb2aca687e212",
+          "id": "69eb2acfce013e2",
           "task_id": "69eb2a5cceab23a046d3",
           "name": "连接之后试运行",
           "completed": false,
