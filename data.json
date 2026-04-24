@@ -7,27 +7,27 @@
       "status": "进行中",
       "priority": "高",
       "progress": 66,
-      "deadline": "",
-      "is_draft": 1,
+      "deadline": "2026-04-30",
+      "is_draft": 0,
       "created": "2026-04-24",
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb25fd9e42d50",
+          "id": "69eb26016f89de0",
           "task_id": "69eb25306ba9911fc615",
           "name": "复制采集美团酒店的数据档案，尝试同样的方法采集其他平台",
           "completed": true,
           "sort_order": 0
         },
         {
-          "id": "69eb25fdf2cb3e1",
+          "id": "69eb26012392721",
           "task_id": "69eb25306ba9911fc615",
           "name": "建立价格体系，活动内容，利润分析来自不同平台的数据",
           "completed": true,
           "sort_order": 1
         },
         {
-          "id": "69eb25fd9363482",
+          "id": "69eb2601f86a642",
           "task_id": "69eb25306ba9911fc615",
           "name": "归档整理",
           "completed": false,
