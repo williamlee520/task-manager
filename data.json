@@ -13,11 +13,25 @@
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eba2a71a19380",
+          "id": "69eba31bb567680",
           "task_id": "69eba2351a043f2e643c",
           "name": "建立自动化任务",
           "completed": false,
           "sort_order": 0
+        },
+        {
+          "id": "69eba31b5246151",
+          "task_id": "69eba2351a043f2e643c",
+          "name": "截图资料转文字",
+          "completed": false,
+          "sort_order": 1
+        },
+        {
+          "id": "69eba31b3928402",
+          "task_id": "69eba2351a043f2e643c",
+          "name": "下载实用视频转文字，整理到知识库",
+          "completed": false,
+          "sort_order": 2
         }
       ]
     },
