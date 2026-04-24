@@ -13,23 +13,23 @@
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb2190d63da70",
+          "id": "69eb219512680d0",
           "task_id": "69eb21325e893bae4410",
           "name": "建立企业微信和服务号",
           "completed": false,
           "sort_order": 0
         },
         {
-          "id": "69eb219046b4381",
+          "id": "69eb2195fd9c9a1",
           "task_id": "69eb21325e893bae4410",
           "name": "部署本地模型和申请云端模型",
           "completed": false,
           "sort_order": 1
         },
         {
-          "id": "69eb21908706f22",
+          "id": "69eb219511e1a32",
           "task_id": "69eb21325e893bae4410",
-          "name": "接入之后",
+          "name": "接入之后试运行",
           "completed": false,
           "sort_order": 2
         }
