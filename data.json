@@ -13,16 +13,16 @@
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb21725f86790",
+          "id": "69eb21774b2c260",
           "task_id": "69eb21325e893bae4410",
           "name": "建立企业微信和服务号",
           "completed": false,
           "sort_order": 0
         },
         {
-          "id": "69eb2172509ffa1",
+          "id": "69eb217772dea71",
           "task_id": "69eb21325e893bae4410",
-          "name": "不属本地模型模型",
+          "name": "不属本地模型模",
           "completed": false,
           "sort_order": 1
         }
