@@ -6,12 +6,20 @@
       "desc": "AI建立不同的agent来实现公众号自动化运营管理",
       "status": "进行中",
       "priority": "中",
-      "progress": 0,
+      "progress": 100,
       "deadline": "",
       "is_draft": 1,
       "created": "2026-04-24",
       "updated": "2026-04-24",
-      "stages": []
+      "stages": [
+        {
+          "id": "69eb264763d5e60",
+          "task_id": "69eb261f58ee35f7de51",
+          "name": "建立",
+          "completed": true,
+          "sort_order": 0
+        }
+      ]
     },
     {
       "id": "69eb25306ba9911fc615",
