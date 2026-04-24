@@ -13,14 +13,14 @@
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb2abb4ba3910",
+          "id": "69eb2ac030dd4c0",
           "task_id": "69eb2a5cceab23a046d3",
           "name": "多为表格，建立房态订单等信息",
           "completed": false,
           "sort_order": 0
         },
         {
-          "id": "69eb2abb0a38691",
+          "id": "69eb2ac01d789f1",
           "task_id": "69eb2a5cceab23a046d3",
           "name": "连接 workbuddy之前抓取的所有平台数据，包括订单管理",
           "completed": false,
