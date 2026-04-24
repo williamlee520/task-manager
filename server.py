@@ -437,6 +437,19 @@ def force_save():
     ok = save_data(data)
     return {"ok": ok}
 
+# ===== 诊断接口 =====
+@app.get("/api/debug")
+def debug_info(request: Request):
+    """诊断 GitHub 存储配置是否正确"""
+    token_preview = GH_TOKEN[:6] + "..." if GH_TOKEN else "(空)"
+    return {
+        "GH_REPO": GH_REPO or "(空)",
+        "GH_TOKEN_preview": token_preview,
+        "GH_BRANCH": GH_BRANCH,
+        "data_loaded": _data_cache is not None,
+        "tasks_count": len(_data_cache.get("tasks",[])) if _data_cache else 0,
+    }
+
 # ===== 前端 =====
 @app.get("/")
 def serve_index():
