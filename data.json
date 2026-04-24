@@ -13,14 +13,14 @@
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb2aad9194400",
+          "id": "69eb2ab16dcc270",
           "task_id": "69eb2a5cceab23a046d3",
           "name": "多为表格，建立房态订单等信息",
           "completed": false,
           "sort_order": 0
         },
         {
-          "id": "69eb2aad9b3fc61",
+          "id": "69eb2ab159a27b1",
           "task_id": "69eb2a5cceab23a046d3",
           "name": "连接wacced之前抓取的所有平台数据",
           "completed": false,
