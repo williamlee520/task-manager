@@ -165,28 +165,18 @@ def get_data():
         return _data_cache
 
 def mark_dirty():
-    """标记数据已修改，需要保存"""
-    global _data_dirty
-    _data_dirty = True
-
-# ===== 后台保存线程 =====
-def save_loop():
-    """每 10 秒检查，有修改就保存"""
+    """标记数据已修改，立即保存到 GitHub"""
     global _data_dirty, _data_cache
-    while True:
-        time.sleep(10)
-        if _data_dirty and _data_cache is not None:
-            with _data_lock:
-                _data_dirty = False
-                save_data(_data_cache)
+    _data_dirty = True
+    # 立即在后台线程中保存，不阻塞当前请求
+    if _data_cache is not None:
+        t = threading.Thread(target=lambda: save_data(_data_cache), daemon=True)
+        t.start()
 
 # 启动时创建分支并加载数据
 _gh_create_branch()
 _initial_data = load_data()
 _data_cache = _initial_data
-
-save_thread = threading.Thread(target=save_loop, daemon=True)
-save_thread.start()
 
 # ===== 密码工具 =====
 def hash_password(password: str, salt: str = None) -> tuple:
