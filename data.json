@@ -8,14 +8,14 @@
       "priority": "中",
       "progress": 0,
       "deadline": "",
-      "is_draft": 1,
+      "is_draft": 0,
       "created": "2026-04-24",
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eba2a30ed0220",
+          "id": "69eba2a71a19380",
           "task_id": "69eba2351a043f2e643c",
-          "name": "建立",
+          "name": "建立自动化任务",
           "completed": false,
           "sort_order": 0
         }
