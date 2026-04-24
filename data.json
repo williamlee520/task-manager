@@ -1,6 +1,19 @@
 {
   "tasks": [
     {
+      "id": "69eb25306ba9911fc615",
+      "name": "通过",
+      "desc": "",
+      "status": "待办",
+      "priority": "中",
+      "progress": 0,
+      "deadline": "",
+      "is_draft": 1,
+      "created": "2026-04-24",
+      "updated": "2026-04-24",
+      "stages": []
+    },
+    {
       "id": "69eb23e71f2472f62689",
       "name": "采集美团酒店平台的所有房源参加的活动",
       "desc": "通过work buddy自动化任务采集美团酒店的房价，房源，还有活动",
