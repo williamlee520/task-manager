@@ -1,4 +1,7 @@
 {
   "tasks": [],
-  "auth": null
+  "auth": {
+    "password_hash": "ac7f5bb8753f9fff708ae3b52dd9fe3ec2607c2c5d2c135e0c75f25d55dd643f",
+    "salt": "e741a244c5ab6c0acbadae53309cc63f"
+  }
 }
