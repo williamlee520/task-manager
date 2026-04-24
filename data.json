@@ -1,6 +1,34 @@
 {
   "tasks": [
     {
+      "id": "69eb148c0d142ec9bd61",
+      "name": "即时保存测试",
+      "desc": "验证修改后立刻存到GitHub",
+      "status": "待办",
+      "priority": "中",
+      "progress": 100,
+      "deadline": "",
+      "is_draft": 0,
+      "created": "2026-04-24",
+      "updated": "2026-04-24",
+      "stages": [
+        {
+          "id": "69eb148c415fa20",
+          "task_id": "69eb148c0d142ec9bd61",
+          "name": "步骤1",
+          "completed": true,
+          "sort_order": 0
+        },
+        {
+          "id": "69eb148c3c5a691",
+          "task_id": "69eb148c0d142ec9bd61",
+          "name": "步骤2",
+          "completed": true,
+          "sort_order": 1
+        }
+      ]
+    },
+    {
       "id": "69eb13b025d58fedadcb",
       "name": "今天测试任务",
       "desc": "验证数据是否保存到GitHub",
