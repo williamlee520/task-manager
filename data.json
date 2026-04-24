@@ -1,5 +1,19 @@
 {
-  "tasks": [],
+  "tasks": [
+    {
+      "id": "69eb21325e893bae4410",
+      "name": "AI客服自动化管理",
+      "desc": "",
+      "status": "待办",
+      "priority": "中",
+      "progress": 0,
+      "deadline": "",
+      "is_draft": 1,
+      "created": "2026-04-24",
+      "updated": "2026-04-24",
+      "stages": []
+    }
+  ],
   "auth": {
     "password_hash": "ac7f5bb8753f9fff708ae3b52dd9fe3ec2607c2c5d2c135e0c75f25d55dd643f",
     "salt": "e741a244c5ab6c0acbadae53309cc63f"
