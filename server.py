@@ -270,7 +270,7 @@ def change_password(request: Request, body: SetPassword, response: Response):
 @app.middleware("http")
 async def auth_middleware(request: Request, call_next):
     path = request.url.path
-    public_paths = ["/", "/index.html", "/api/auth/status", "/api/auth/setup", "/api/auth/login"]
+    public_paths = ["/", "/index.html", "/api/auth/status", "/api/auth/setup", "/api/auth/login", "/api/debug"]
     if path in public_paths or path.startswith("/static") or path == "/favicon.ico":
         return await call_next(request)
     if has_password():
