@@ -13,23 +13,23 @@
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb25e9ed54390",
+          "id": "69eb25eec54f930",
           "task_id": "69eb25306ba9911fc615",
           "name": "复制采集美团酒店的数据档案，尝试同样的方法采集其他平台",
           "completed": true,
           "sort_order": 0
         },
         {
-          "id": "69eb25e9a1de421",
+          "id": "69eb25ee656a9a1",
           "task_id": "69eb25306ba9911fc615",
           "name": "建立价格体系，活动内容，利润分析来自不同平台的数据",
           "completed": false,
           "sort_order": 1
         },
         {
-          "id": "69eb25e963bbbb2",
+          "id": "69eb25ee9848882",
           "task_id": "69eb25306ba9911fc615",
-          "name": "归",
+          "name": "党整理",
           "completed": false,
           "sort_order": 2
         }
