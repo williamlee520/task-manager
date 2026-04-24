@@ -13,23 +13,23 @@
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb299cfc26880",
+          "id": "69eb29a14051740",
           "task_id": "69eb269ecc9450c6f34f",
           "name": "AI 采集能够登录的平台-途家、小猪、抖音、",
           "completed": false,
           "sort_order": 0
         },
         {
-          "id": "69eb299c79eb211",
+          "id": "69eb29a15ba7d51",
           "task_id": "69eb269ecc9450c6f34f",
           "name": "不能登录的平台人工采集给 AI-木鸟",
           "completed": false,
           "sort_order": 1
         },
         {
-          "id": "69eb299c46843e2",
+          "id": "69eb29a17ea74a2",
           "task_id": "69eb269ecc9450c6f34f",
-          "name": "整理好之后，ce's",
+          "name": "整理好之后，测试运行，建立zi",
           "completed": false,
           "sort_order": 2
         }
