@@ -6,32 +6,39 @@
       "desc": "通过本地模型和云端模型部署接入企业微信或者服务号，进行客户日常问答管理",
       "status": "进行中",
       "priority": "高",
-      "progress": 100,
+      "progress": 75,
       "deadline": "",
       "is_draft": 1,
       "created": "2026-04-24",
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb219b2510de0",
+          "id": "69eb219fb3f3e40",
           "task_id": "69eb21325e893bae4410",
           "name": "建立企业微信和服务号",
           "completed": true,
           "sort_order": 0
         },
         {
-          "id": "69eb219b15ee1b1",
+          "id": "69eb219fea8e461",
           "task_id": "69eb21325e893bae4410",
           "name": "部署本地模型和申请云端模型",
           "completed": true,
           "sort_order": 1
         },
         {
-          "id": "69eb219bafe8832",
+          "id": "69eb219f4c2ad52",
           "task_id": "69eb21325e893bae4410",
           "name": "接入之后试运行",
           "completed": true,
           "sort_order": 2
+        },
+        {
+          "id": "69eb219f8c781a3",
+          "task_id": "69eb21325e893bae4410",
+          "name": "调教AI客",
+          "completed": false,
+          "sort_order": 3
         }
       ]
     }
