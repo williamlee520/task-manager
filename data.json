@@ -11,7 +11,15 @@
       "is_draft": 1,
       "created": "2026-04-24",
       "updated": "2026-04-24",
-      "stages": []
+      "stages": [
+        {
+          "id": "69eba2a30ed0220",
+          "task_id": "69eba2351a043f2e643c",
+          "name": "建立",
+          "completed": false,
+          "sort_order": 0
+        }
+      ]
     },
     {
       "id": "69eb2a5cceab23a046d3",
