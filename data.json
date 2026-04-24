@@ -2,32 +2,32 @@
   "tasks": [
     {
       "id": "69eb269ecc9450c6f34f",
-      "name": "平台运营管理",
-      "desc": "根据之前AI做的自动化任务，所有平台的数据整理之后交给AI分析",
-      "status": "待办",
+      "name": "通过采集美团酒店的数据经验，复制其他平台",
+      "desc": "根据之前采集美团酒店的数据经验，然后采集其他平台的数据",
+      "status": "进行中",
       "priority": "中",
-      "progress": 0,
+      "progress": 33,
       "deadline": "2026-04-30",
       "is_draft": 0,
       "created": "2026-04-24",
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb29b1276ac70",
+          "id": "69eb2a41c55ec90",
           "task_id": "69eb269ecc9450c6f34f",
           "name": "AI 采集能够登录的平台-途家、小猪、抖音、",
-          "completed": false,
+          "completed": true,
           "sort_order": 0
         },
         {
-          "id": "69eb29b17374b61",
+          "id": "69eb2a41f79cfa1",
           "task_id": "69eb269ecc9450c6f34f",
           "name": "不能登录的平台人工采集给 AI-木鸟",
           "completed": false,
           "sort_order": 1
         },
         {
-          "id": "69eb29b1c8b1b02",
+          "id": "69eb2a4171e8572",
           "task_id": "69eb269ecc9450c6f34f",
           "name": "整理好之后，测试运行，建立自动化任务",
           "completed": false,
