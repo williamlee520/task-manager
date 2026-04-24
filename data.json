@@ -4,40 +4,40 @@
       "id": "69eb23e71f2472f62689",
       "name": "采集OTA平台的所有房源参加的活动",
       "desc": "通过work buddy自动化任务采集美团酒店的房价，房源，还有活动",
-      "status": "待办",
+      "status": "已完成",
       "priority": "高",
-      "progress": 0,
+      "progress": 100,
       "deadline": "2026-04-30",
       "is_draft": 0,
       "created": "2026-04-24",
       "updated": "2026-04-24",
       "stages": [
         {
-          "id": "69eb24f9119aa90",
+          "id": "69eb250031349a0",
           "task_id": "69eb23e71f2472f62689",
           "name": "在WorkBuddy建立任务，采集美团酒店的房价",
-          "completed": false,
+          "completed": true,
           "sort_order": 0
         },
         {
-          "id": "69eb24f9eed1531",
+          "id": "69eb25005ccfc61",
           "task_id": "69eb23e71f2472f62689",
           "name": "让 workbuddy采集美团酒店的房源",
-          "completed": false,
+          "completed": true,
           "sort_order": 1
         },
         {
-          "id": "69eb24f9e08a6a2",
+          "id": "69eb2500a572e62",
           "task_id": "69eb23e71f2472f62689",
           "name": "让 workbuddy采集美团酒店的房源参加的活动",
-          "completed": false,
+          "completed": true,
           "sort_order": 2
         },
         {
-          "id": "69eb24f95899fa3",
+          "id": "69eb25000748843",
           "task_id": "69eb23e71f2472f62689",
           "name": "把采集美团酒店的数据流程整理打包",
-          "completed": false,
+          "completed": true,
           "sort_order": 3
         }
       ]
