@@ -1,6 +1,19 @@
 {
   "tasks": [
     {
+      "id": "6a2ec6d3e1baa3a96029",
+      "name": "A",
+      "desc": "",
+      "status": "待办",
+      "priority": "中",
+      "progress": 0,
+      "deadline": "",
+      "is_draft": 1,
+      "created": "2026-06-14",
+      "updated": "2026-06-14",
+      "stages": []
+    },
+    {
       "id": "69eba2351a043f2e643c",
       "name": "ima收集AI新的资讯",
       "desc": "用workbuddy 建立自动化任务，收集X 其他有用的信息内容",
