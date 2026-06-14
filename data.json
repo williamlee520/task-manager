@@ -11,7 +11,15 @@
       "is_draft": 1,
       "created": "2026-06-14",
       "updated": "2026-06-14",
-      "stages": []
+      "stages": [
+        {
+          "id": "6a2ec7696fd30c0",
+          "task_id": "6a2ec6d3e1baa3a96029",
+          "name": "GPTfen'x",
+          "completed": false,
+          "sort_order": 0
+        }
+      ]
     },
     {
       "id": "69eba2351a043f2e643c",
