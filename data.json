@@ -6,42 +6,42 @@
       "desc": "GPT 分析项目-拆解任务-workbuddy 执行-Codex 审核分析-cursor 修复",
       "status": "进行中",
       "priority": "中",
-      "progress": 40,
+      "progress": 60,
       "deadline": "",
       "is_draft": 0,
       "created": "2026-06-14",
       "updated": "2026-06-14",
       "stages": [
         {
-          "id": "6a2ec8d0379d670",
+          "id": "6a2ef10c6bed980",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "GPT 项目分析完整报告",
           "completed": true,
           "sort_order": 0
         },
         {
-          "id": "6a2ec8d0ccedc81",
+          "id": "6a2ef10cf4d19f1",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "workbuddy 产品设计  PRD  数据库  API  Figma",
           "completed": true,
           "sort_order": 1
         },
         {
-          "id": "6a2ec8d0046d7b2",
+          "id": "6a2ef10c7c94ba2",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "workbuddy 执行 Flutter MVP  FastAPI MVP",
-          "completed": false,
+          "completed": true,
           "sort_order": 2
         },
         {
-          "id": "6a2ec8d0d5dcf03",
+          "id": "6a2ef10c34a0293",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "Codex 分析审查Architecture Review  Security Review  AI Module Design",
           "completed": false,
           "sort_order": 3
         },
         {
-          "id": "6a2ec8d097542a4",
+          "id": "6a2ef10c0216e84",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "按照 Codex 的建议  继续让 WorkBuddy 修改",
           "completed": false,
