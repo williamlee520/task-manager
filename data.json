@@ -13,16 +13,16 @@
       "updated": "2026-06-14",
       "stages": [
         {
-          "id": "6a2ec787dc6f220",
+          "id": "6a2ec78c3255580",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "GPT 项目分析完整报告",
           "completed": false,
           "sort_order": 0
         },
         {
-          "id": "6a2ec7873230191",
+          "id": "6a2ec78c51c0091",
           "task_id": "6a2ec6d3e1baa3a96029",
-          "name": "workbuddy 按任务阶段完",
+          "name": "workbuddy 按",
           "completed": false,
           "sort_order": 1
         }
