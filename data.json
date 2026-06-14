@@ -13,35 +13,35 @@
       "updated": "2026-06-14",
       "stages": [
         {
-          "id": "6a2ef11435d1340",
+          "id": "6a2ef1159df23a0",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "GPT 项目分析完整报告",
           "completed": true,
           "sort_order": 0
         },
         {
-          "id": "6a2ef11425ded21",
+          "id": "6a2ef1154982c11",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "workbuddy 产品设计  PRD  数据库  API  Figma",
           "completed": true,
           "sort_order": 1
         },
         {
-          "id": "6a2ef1143346a52",
+          "id": "6a2ef1151404532",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "workbuddy 执行 Flutter MVP  FastAPI MVP",
           "completed": true,
           "sort_order": 2
         },
         {
-          "id": "6a2ef1142f304a3",
+          "id": "6a2ef11589bbb43",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "Codex 分析审查Architecture Review  Security Review  AI Module Design",
           "completed": true,
           "sort_order": 3
         },
         {
-          "id": "6a2ef1147fdcdb4",
+          "id": "6a2ef1158710a84",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "按照 Codex 的建议  继续让 WorkBuddy 修改",
           "completed": false,
