@@ -13,21 +13,21 @@
       "updated": "2026-06-14",
       "stages": [
         {
-          "id": "6a2ec87c65eff10",
+          "id": "6a2ec88192f66a0",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "GPT 项目分析完整报告",
           "completed": true,
           "sort_order": 0
         },
         {
-          "id": "6a2ec87cead5ee1",
+          "id": "6a2ec8818053551",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "workbuddy 产品设计  PRD  数据库  API  Figma",
           "completed": true,
           "sort_order": 1
         },
         {
-          "id": "6a2ec87cc2e41f2",
+          "id": "6a2ec88140d7a32",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "Codex 分析审查Architecture Review  Security Review  AI Module Design",
           "completed": false,
