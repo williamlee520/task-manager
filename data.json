@@ -13,23 +13,23 @@
       "updated": "2026-06-14",
       "stages": [
         {
-          "id": "6a2ec7ffb32e950",
+          "id": "6a2ec804dc05c30",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "GPT 项目分析完整报告",
           "completed": true,
           "sort_order": 0
         },
         {
-          "id": "6a2ec7ff1c5d2b1",
+          "id": "6a2ec804eec14c1",
           "task_id": "6a2ec6d3e1baa3a96029",
           "name": "workbuddy 按任务阶段完成前面两阶段代码",
           "completed": true,
           "sort_order": 1
         },
         {
-          "id": "6a2ec7ffb6a8742",
+          "id": "6a2ec804852c0c2",
           "task_id": "6a2ec6d3e1baa3a96029",
-          "name": "Codex 分析审查",
+          "name": "Codex 分析审查Architecture Review  Security Review  AI Module Design",
           "completed": false,
           "sort_order": 2
         }
