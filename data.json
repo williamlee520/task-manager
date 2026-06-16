@@ -1,6 +1,19 @@
 {
   "tasks": [
     {
+      "id": "6a3183f57f3a5e14ca71",
+      "name": "民宿房间设计",
+      "desc": "",
+      "status": "待办",
+      "priority": "中",
+      "progress": 0,
+      "deadline": "",
+      "is_draft": 1,
+      "created": "2026-06-16",
+      "updated": "2026-06-16",
+      "stages": []
+    },
+    {
       "id": "6a310265efb2051b9007",
       "name": "AI 自动化财务报税",
       "desc": "",
