@@ -8,23 +8,30 @@
       "priority": "中",
       "progress": 0,
       "deadline": "",
-      "is_draft": 1,
+      "is_draft": 0,
       "created": "2026-06-16",
       "updated": "2026-06-16",
       "stages": [
         {
-          "id": "6a31843d426f240",
+          "id": "6a318473f4e3ef0",
           "task_id": "6a3183f57f3a5e14ca71",
           "name": "房间原型图拍照",
           "completed": false,
           "sort_order": 0
         },
         {
-          "id": "6a31843d71d3311",
+          "id": "6a318473e053c61",
           "task_id": "6a3183f57f3a5e14ca71",
           "name": "AI 设计适合的风格",
           "completed": false,
           "sort_order": 1
+        },
+        {
+          "id": "6a3184730bb9d12",
+          "task_id": "6a3183f57f3a5e14ca71",
+          "name": "购买材料开始施工",
+          "completed": false,
+          "sort_order": 2
         }
       ]
     },
