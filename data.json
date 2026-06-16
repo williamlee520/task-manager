@@ -11,7 +11,15 @@
       "is_draft": 1,
       "created": "2026-06-16",
       "updated": "2026-06-16",
-      "stages": []
+      "stages": [
+        {
+          "id": "6a318415ba82df0",
+          "task_id": "6a3183f57f3a5e14ca71",
+          "name": "房间",
+          "completed": false,
+          "sort_order": 0
+        }
+      ]
     },
     {
       "id": "6a310265efb2051b9007",
