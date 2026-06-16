@@ -13,16 +13,16 @@
       "updated": "2026-06-16",
       "stages": [
         {
-          "id": "6a3184257c19fa0",
+          "id": "6a31842d55d11a0",
           "task_id": "6a3183f57f3a5e14ca71",
           "name": "房间原型图拍照",
           "completed": false,
           "sort_order": 0
         },
         {
-          "id": "6a318425895cfa1",
+          "id": "6a31842d30bb8e1",
           "task_id": "6a3183f57f3a5e14ca71",
-          "name": "AI",
+          "name": "AI 设计适合的",
           "completed": false,
           "sort_order": 1
         }
